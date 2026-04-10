@@ -369,8 +369,8 @@ public class VoucherOrderServiceImpl extends ServiceImpl<VoucherOrderMapper, Vou
         Long userId = voucherOrder.getUserId();
         Long voucherId = voucherOrder.getVoucherId();
         //查询用户与该订单的记录是否存在
-            Integer count = query().eq("user_id", userId).eq("voucher_id", voucherId).count();
-            if (count > 0) {
+        Long count = query().eq("user_id", userId).eq("voucher_id", voucherId).count();
+        if (count > 0) {
                 log.error("您已经购买过了!");
                 return;
                 //return Result.fail("您已经购买过了!");
